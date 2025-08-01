@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .maxSessionsPreventsLogin(true)
                         .sessionRegistry(sessionRegistry()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/v1/auth/login").permitAll()
                         .requestMatchers("/api/v1/users/create").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exceptions -> exceptions
