@@ -20,6 +20,18 @@ services:
     volumes:
       - redis_data:/data
 
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DATABASE_URL: "jdbc:postgresql://postgres:5432/postgres?currentSchema=auth_db"
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+
 volumes:
   postgres-data:
   redis_data:
